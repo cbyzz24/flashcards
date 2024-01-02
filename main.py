@@ -3,7 +3,7 @@ from random import randint
 
 def main(page: ft.Page):
     page.window_width = 800
-    page.window_height = 800
+    page.window_height = 750
     page.bgcolor = "#27374D"
     page.title = "Flashademics"
     page.padding = 20
@@ -57,8 +57,8 @@ def main(page: ft.Page):
         page.update()
 
     title_label = ft.Container(
-        content=ft.Text(value="American Civics", size=25, color="blue"),
-        padding=30
+        content=ft.Text(value="American Civics", size=25, color="white"),
+        margin=20
     )
     button_row = ft.Row(
         alignment="center",
@@ -69,38 +69,49 @@ def main(page: ft.Page):
         ]
     )
 
-    question_container_header = ft.Text(value="Question:", size=20, color="white", text_align="center")
+    question_container_header = ft.Text(value="Question:", size=20, color="white", text_align="center", width=600, bgcolor="")
 
-    answer_container_header = ft.Text(value="Question:", size=20, color="white", text_align="center")
+    answer_container_header = ft.Text(value="Answer:", size=20, color="white", text_align="center", width=600, bgcolor="")
 
-    question_text = ft.Text(value="", size=20, color="white", text_align="center")
+    question_text = ft.Text(value="", size=20, color="white", text_align="center", width=600)
 
-    answer_text = ft.Text(value="", size=20, color="white", text_align="center")
+    answer_text = ft.Text(value="", size=20, color="white", text_align="center", width=600)
 
     content_layout = ft.Column(
         width=600,
         horizontal_alignment="center",
         controls=[
             ft.Container(
-                content=(question_text),
+                content=ft.Stack(
+                    controls=(
+                        ft.Container((question_container_header), margin=10),
+                        ft.Container((question_text), margin=55),
+                    ),
+                ),
                 bgcolor="#526D82",
                 width=600,
                 height=250,
                 border_radius=6,
-                padding=ft.padding.symmetric(85)
+                #padding=ft.padding.symmetric(85)
                     
             ),
             ft.Container(
-                content=button_row, padding=20,
+                content=button_row, margin=10,
             ),
             ft.Container(
-                content=answer_text,
+                content=ft.Stack(
+                    controls=(
+                        ft.Container((answer_container_header), margin=10),
+                        ft.Container((answer_text), margin=80),
+                    ),
+                ),
                 bgcolor="#526D82",
                 width=600,
                 height=250,
                 border_radius=6,
-                padding=ft.padding.symmetric(90),
-            ),
+                #padding=ft.padding.symmetric(90),
+            )
+                
         ]
     )
 
@@ -110,7 +121,6 @@ def main(page: ft.Page):
         content_layout,
 
     )
-
 
     page.update()
 
