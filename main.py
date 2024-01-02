@@ -57,7 +57,7 @@ def main(page: ft.Page):
         page.update()
 
     title_label = ft.Container(
-        content=ft.Text(value="American Civics", size=25, color="white"),
+        content=ft.Text(value="American Civics", size=25, color="blue"),
         padding=30
     )
     button_row = ft.Row(
